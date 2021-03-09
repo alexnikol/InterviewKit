@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8DEF21A325F765F60088137D /* InterviewKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DEF219925F765F50088137D /* InterviewKit.framework */; };
-		8DEF21A825F765F60088137D /* InterviewKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEF21A725F765F60088137D /* InterviewKitTests.swift */; };
+		8DEF21B925F769830088137D /* FeaturedQuestionLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEF21B825F769830088137D /* FeaturedQuestionLoader.swift */; };
+		8DEF21BD25F769C70088137D /* FeaturedQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEF21BC25F769C70088137D /* FeaturedQuestion.swift */; };
+		8DEF21C725F76E180088137D /* RemoteFeaturedQuestionLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEF21C625F76E180088137D /* RemoteFeaturedQuestionLoaderTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,8 +27,10 @@
 		8DEF219925F765F50088137D /* InterviewKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = InterviewKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DEF219D25F765F50088137D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DEF21A225F765F60088137D /* InterviewKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InterviewKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8DEF21A725F765F60088137D /* InterviewKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterviewKitTests.swift; sourceTree = "<group>"; };
 		8DEF21A925F765F60088137D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DEF21B825F769830088137D /* FeaturedQuestionLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedQuestionLoader.swift; sourceTree = "<group>"; };
+		8DEF21BC25F769C70088137D /* FeaturedQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedQuestion.swift; sourceTree = "<group>"; };
+		8DEF21C625F76E180088137D /* RemoteFeaturedQuestionLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeaturedQuestionLoaderTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				8DEF219D25F765F50088137D /* Info.plist */,
+				8DEF21B725F769480088137D /* FeaturedQuestion Feature */,
 			);
 			path = InterviewKit;
 			sourceTree = "<group>";
@@ -77,10 +82,19 @@
 		8DEF21A625F765F60088137D /* InterviewKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				8DEF21A725F765F60088137D /* InterviewKitTests.swift */,
 				8DEF21A925F765F60088137D /* Info.plist */,
+				8DEF21C625F76E180088137D /* RemoteFeaturedQuestionLoaderTests.swift */,
 			);
 			path = InterviewKitTests;
+			sourceTree = "<group>";
+		};
+		8DEF21B725F769480088137D /* FeaturedQuestion Feature */ = {
+			isa = PBXGroup;
+			children = (
+				8DEF21BC25F769C70088137D /* FeaturedQuestion.swift */,
+				8DEF21B825F769830088137D /* FeaturedQuestionLoader.swift */,
+			);
+			path = "FeaturedQuestion Feature";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -143,9 +157,11 @@
 				TargetAttributes = {
 					8DEF219825F765F50088137D = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
 					};
 					8DEF21A125F765F60088137D = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
 					};
 				};
 			};
@@ -190,6 +206,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DEF21BD25F769C70088137D /* FeaturedQuestion.swift in Sources */,
+				8DEF21B925F769830088137D /* FeaturedQuestionLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,7 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DEF21A825F765F60088137D /* InterviewKitTests.swift in Sources */,
+				8DEF21C725F76E180088137D /* RemoteFeaturedQuestionLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +354,7 @@
 		8DEF21AE25F765F60088137D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -353,6 +372,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Alex-NIkolaychuk.InterviewKit";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -360,6 +380,7 @@
 		8DEF21AF25F765F60088137D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
@@ -384,6 +405,8 @@
 		8DEF21B125F765F60088137D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = WUJDW64U79;
@@ -395,6 +418,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Alex-NIkolaychuk.InterviewKitTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -402,6 +426,8 @@
 		8DEF21B225F765F60088137D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = WUJDW64U79;
