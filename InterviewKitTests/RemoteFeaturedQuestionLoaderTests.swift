@@ -27,9 +27,9 @@ class RemoteFeaturedQuestionLoaderTests: XCTestCase {
     
     // MARK: - Helpers
     
-    private func makeSUT(url: URL = URL(string: "https://a-url.com")!) -> (sut: RemoteFeaturedLoader, client: HTTPClientSpy) {
+    private func makeSUT(url: URL = URL(string: "https://a-url.com")!) -> (sut: RemoteFeatureQuestionLoader, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
-        return (RemoteFeaturedLoader(url: url, client: client), client)
+        return (RemoteFeatureQuestionLoader(url: url, client: client), client)
     }
     
     private class HTTPClientSpy: HTTPClient {

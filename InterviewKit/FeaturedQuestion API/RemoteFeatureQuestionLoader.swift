@@ -1,5 +1,5 @@
 //
-//  RemoteFeaturedLoader.swift
+//  RemoteFeatureQuestionLoader.swift
 //  InterviewKit
 //
 //  Created by Alexander Nikolaychuk on 11.03.2021.
@@ -11,7 +11,7 @@ public protocol HTTPClient {
     func get(from url: URL)
 }
 
-public final class RemoteFeaturedLoader {
+public final class RemoteFeatureQuestionLoader {
     private let client: HTTPClient
     private let url: URL
     
