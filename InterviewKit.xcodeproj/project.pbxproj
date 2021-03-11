@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8DA897A025F9F06100CE34FF /* RemoteFeaturedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA8979F25F9F06100CE34FF /* RemoteFeaturedLoader.swift */; };
 		8DEF21A325F765F60088137D /* InterviewKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DEF219925F765F50088137D /* InterviewKit.framework */; };
 		8DEF21B925F769830088137D /* FeaturedQuestionLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEF21B825F769830088137D /* FeaturedQuestionLoader.swift */; };
 		8DEF21BD25F769C70088137D /* FeaturedQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEF21BC25F769C70088137D /* FeaturedQuestion.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8DA8979F25F9F06100CE34FF /* RemoteFeaturedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeaturedLoader.swift; sourceTree = "<group>"; };
 		8DEF219925F765F50088137D /* InterviewKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = InterviewKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DEF219D25F765F50088137D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DEF21A225F765F60088137D /* InterviewKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InterviewKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +54,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8DA8979E25F9F03800CE34FF /* FeaturedQuestion API */ = {
+			isa = PBXGroup;
+			children = (
+				8DA8979F25F9F06100CE34FF /* RemoteFeaturedLoader.swift */,
+			);
+			path = "FeaturedQuestion API";
+			sourceTree = "<group>";
+		};
 		8DEF218F25F765F50088137D = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +83,7 @@
 		8DEF219B25F765F50088137D /* InterviewKit */ = {
 			isa = PBXGroup;
 			children = (
+				8DA8979E25F9F03800CE34FF /* FeaturedQuestion API */,
 				8DEF219D25F765F50088137D /* Info.plist */,
 				8DEF21B725F769480088137D /* FeaturedQuestion Feature */,
 			);
@@ -208,6 +219,7 @@
 			files = (
 				8DEF21BD25F769C70088137D /* FeaturedQuestion.swift in Sources */,
 				8DEF21B925F769830088137D /* FeaturedQuestionLoader.swift in Sources */,
+				8DA897A025F9F06100CE34FF /* RemoteFeaturedLoader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
