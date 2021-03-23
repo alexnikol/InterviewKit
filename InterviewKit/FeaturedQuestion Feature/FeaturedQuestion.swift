@@ -15,18 +15,18 @@ struct FeaturedQuestion {
     let difficulty: QuestionDifficulty
     let attachments: [AnswerAttachment]
     let categories: [QuestionCategory]
-}
+    
+    struct QuestionCategory {
+        let id: Int
+        let title: String
+    }
 
-struct QuestionCategory {
-    let id: Int
-    let title: String
-}
+    enum AnswerAttachment {
+        case text(content: String)
+        case image(link: URL)
+    }
 
-enum AnswerAttachment {
-    case text(content: String)
-    case image(link: URL)
-}
-
-enum QuestionDifficulty {
-    case easy, medium, advanced
+    enum QuestionDifficulty {
+        case easy, medium, advanced
+    }
 }
