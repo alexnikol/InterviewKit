@@ -12,6 +12,7 @@ public protocol HTTPClient {
 }
 
 public final class RemoteFeatureQuestionLoader {
+    
     private let client: HTTPClient
     private let url: URL
     
@@ -34,4 +35,5 @@ public final class RemoteFeatureQuestionLoader {
             }
         })
     }
+    
 }
