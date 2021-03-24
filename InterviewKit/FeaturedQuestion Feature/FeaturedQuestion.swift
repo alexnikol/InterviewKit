@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct FeaturedQuestion {
+public struct FeaturedQuestion {
+    
     let id: Int
     let question: String
     let answer: String
@@ -28,5 +29,11 @@ struct FeaturedQuestion {
 
     enum QuestionDifficulty {
         case easy, medium, advanced
+    }
+}
+
+extension FeaturedQuestion: Equatable {
+    public static func == (lhs: FeaturedQuestion, rhs: FeaturedQuestion) -> Bool {
+        return lhs.id == rhs.id
     }
 }
