@@ -38,14 +38,10 @@ class RemoteFeaturedQuestionLoaderTests: XCTestCase {
     func test_load_deliversErrorOnClientError() {
         let (sut, client) = makeSUT()
         
-        var capturedError = [RemoteFeatureQuestionLoader.Error]()
-        sut.load { error in
-            capturedError.append(error)
-        }
-        let clientError = NSError(domain: "Test", code: 0)
-        client.complete(with: clientError)
-        
-        XCTAssertEqual(capturedError, [.connectivity])
+        expect(sut, toCompleteWithError: .connectivity, when: {
+            let clientError = NSError(domain: "Test", code: 0)
+            client.complete(with: clientError)
+        })
     }
     
     func test_load_deliversErrorOnNon200HTTPResponse() {
@@ -53,23 +49,20 @@ class RemoteFeaturedQuestionLoaderTests: XCTestCase {
                 
         let sampleCodes = [199, 201, 300, 400, 500].enumerated()
         sampleCodes.forEach { index, code in
-            var capturedError = [RemoteFeatureQuestionLoader.Error]()
-            sut.load { capturedError.append($0) }
-            client.complete(withStatusCode: code, at: index)
-            XCTAssertEqual(capturedError, [.invalidData])
+            expect(sut, toCompleteWithError: .invalidData, when: {
+                client.complete(withStatusCode: code, at: index)
+            })
         }
     }
     
     func test_load_deliversErrorOn200HTTPResponseWithInvalidJSON() {
+        
         let (sut, client) = makeSUT()
         
-        var capturedError = [RemoteFeatureQuestionLoader.Error]()
-        sut.load { capturedError.append($0) }
-        
-        let invalidJSON = Data("invalid jons".utf8)
-        client.complete(withStatusCode: 200, data: invalidJSON)
-        
-        XCTAssertEqual(capturedError, [.invalidData])
+        expect(sut, toCompleteWithError: .invalidData, when: {
+            let invalidJSON = Data("invalid jons".utf8)
+            client.complete(withStatusCode: 200, data: invalidJSON)
+        })
     }
     
     // MARK: - Helpers
@@ -77,6 +70,21 @@ class RemoteFeaturedQuestionLoaderTests: XCTestCase {
     private func makeSUT(url: URL = URL(string: "https://a-url.com")!) -> (sut: RemoteFeatureQuestionLoader, client: HTTPClientSpy) {
         let client = HTTPClientSpy()
         return (RemoteFeatureQuestionLoader(url: url, client: client), client)
+    }
+    
+    private func expect(
+        _ sut: RemoteFeatureQuestionLoader,
+        toCompleteWithError error: RemoteFeatureQuestionLoader.Error,
+        when action: ( () -> Void ),
+        file: StaticString = #file,
+        line: UInt = #line) {
+        
+        var capturedError = [RemoteFeatureQuestionLoader.Error]()
+        sut.load { capturedError.append($0) }
+        
+        action()
+        
+        XCTAssertEqual(capturedError, [error], file: file, line: line)
     }
     
     private class HTTPClientSpy: HTTPClient {
