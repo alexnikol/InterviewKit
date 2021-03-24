@@ -65,6 +65,34 @@ class RemoteFeaturedQuestionLoaderTests: XCTestCase {
         })
     }
     
+    func test_load_deliversValidDataOn200HTTPResponseWithValidJSON() {
+        let (sut, client) = makeSUT()
+        
+        let item = FeaturedQuestion(
+            id: 1,
+            question: "Any Question",
+            answer: "Any Answer",
+            source: nil,
+            difficulty: .easy,
+            attachments: [],
+            categories: []
+        )
+        
+        let itemJSON: [String: Any] = [
+            "id": item.id,
+            "question": item.question,
+            "answer": item.answer,
+            "difficulty": item.difficulty.rawValue,
+            "categories": [],
+            "attachments": []
+        ]
+        
+        expect(sut, toCompleteWithResult: .success(item)) {
+            let json = try! JSONSerialization.data(withJSONObject: itemJSON)
+            client.complete(withStatusCode: 200, data: json)
+        }
+    }
+    
     // MARK: - Helpers
     
     private func makeSUT(url: URL = URL(string: "https://a-url.com")!) -> (sut: RemoteFeatureQuestionLoader, client: HTTPClientSpy) {

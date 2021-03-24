@@ -31,14 +31,18 @@ public final class RemoteFeatureQuestionLoader {
     }
     
     public func load(completion: @escaping (Result) -> Void) {
-        client.get(from: url, completion: { result in
+        client.get(from: url) { result in
             switch result {
-            case .success:
-                completion(.failure(.invalidData))
+            case .success((let data, _)):
+                guard let featuredQuestion = try? JSONDecoder().decode(FeaturedQuestion.self, from: data) else {
+                    completion(.failure(.invalidData))
+                    return
+                }
+                completion(.success(featuredQuestion))
             case .failure:
                 completion(.failure(.connectivity))
             }
-        })
+        }
     }
     
 }
